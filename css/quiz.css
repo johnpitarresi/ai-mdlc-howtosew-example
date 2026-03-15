@@ -1,0 +1,272 @@
+/* ==========================================================================
+   quiz.css — Quiz page styles
+   Project: Sewing Learning Site
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Quiz Page Layout
+   -------------------------------------------------------------------------- */
+.quiz-header {
+  margin-bottom: var(--space-8);
+}
+
+.quiz-meta {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.quiz-breadcrumb {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.quiz-breadcrumb a {
+  color: var(--color-text-muted);
+}
+
+.quiz-breadcrumb a:hover {
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   2. Quiz Form & Questions
+   -------------------------------------------------------------------------- */
+.quiz-questions {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-8);
+}
+
+.quiz-question {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+  transition: border-color var(--transition-fast);
+}
+
+.quiz-question.is-correct {
+  border-color: var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+.quiz-question.is-incorrect {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.question-number {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.question-text {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  max-width: none;
+}
+
+/* Answer Options */
+.answer-group {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.answer-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background-color: var(--color-surface);
+  font-family: var(--font-ui);
+}
+
+.answer-option:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.answer-option input[type="radio"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.answer-option input[type="radio"]:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.answer-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+/* Selected state */
+.answer-option:has(input:checked) {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+/* Correct/Incorrect states (after submission) */
+.answer-option.is-correct-answer {
+  border-color: var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+.answer-option.is-correct-answer .answer-text {
+  color: var(--color-success);
+  font-weight: var(--font-weight-semibold);
+}
+
+.answer-option.is-wrong-answer {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+  opacity: 0.8;
+}
+
+.answer-option.is-wrong-answer .answer-text {
+  color: var(--color-error);
+}
+
+/* Explanation text (shown after submission) */
+.question-explanation {
+  display: none;
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background-color: rgba(44, 26, 20, 0.04);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.question-explanation.is-visible {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   3. Validation Message
+   -------------------------------------------------------------------------- */
+.quiz-validation-msg {
+  display: none;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-warning-bg);
+  border: 1px solid var(--color-warning);
+  border-radius: var(--border-radius);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-sm);
+  color: var(--color-warning);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-4);
+}
+
+.quiz-validation-msg.is-visible {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   4. Submit Button
+   -------------------------------------------------------------------------- */
+.quiz-submit {
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--font-size-base);
+}
+
+/* --------------------------------------------------------------------------
+   5. Result Card
+   -------------------------------------------------------------------------- */
+.quiz-result {
+  display: none;
+  margin-top: var(--space-8);
+  padding: var(--space-8);
+  border-radius: var(--border-radius-lg);
+  border: 2px solid;
+  text-align: center;
+}
+
+.quiz-result.is-visible {
+  display: block;
+}
+
+.quiz-result--pass {
+  background-color: var(--color-success-bg);
+  border-color: var(--color-success);
+}
+
+.quiz-result--fail {
+  background-color: var(--color-warning-bg);
+  border-color: var(--color-warning);
+}
+
+.result-score {
+  font-family: var(--font-display);
+  font-size: var(--font-size-4xl);
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: var(--space-2);
+}
+
+.quiz-result--pass .result-score {
+  color: var(--color-success);
+}
+
+.quiz-result--fail .result-score {
+  color: var(--color-warning);
+}
+
+.result-label {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-3);
+}
+
+.quiz-result--pass .result-label {
+  color: var(--color-success);
+}
+
+.quiz-result--fail .result-label {
+  color: var(--color-warning);
+}
+
+.result-message {
+  font-family: var(--font-ui);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  max-width: none;
+}
+
+.result-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}

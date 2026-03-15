@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn to Sew — Sewing</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/print.css" media="print">
+  <style>
+    /* ── Hero ─────────────────────────────────────────────────────────────── */
+    .hero {
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-10);
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: var(--font-size-4xl);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-2);
+      line-height: 1.15;
+    }
+
+    /* Decorative stitch line under hero title */
+    .hero h1::after {
+      content: '';
+      display: block;
+      width: 56px;
+      height: 2px;
+      background: var(--stitch-line-accent);
+      margin-top: var(--space-4);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-ui);
+      font-size: var(--font-size-base);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--color-text-muted);
+      max-width: 58ch;
+      margin-top: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .master-progress {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-4) var(--space-5);
+      max-width: 440px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .master-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-ui);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .progress-count {
+      color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .master-progress-bar {
+      height: 6px;
+      background: var(--color-border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .master-progress-fill {
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        var(--color-primary-dark) 0%,
+        var(--color-primary) 50%,
+        var(--color-primary-dark) 100%
+      );
+      background-size: 200% 100%;
+      border-radius: 3px;
+      transition: width var(--transition-base);
+      width: 0%;
+      animation: threadShimmer 4s ease-in-out infinite;
+    }
+
+    /* ── Section headings ─────────────────────────────────────────────────── */
+    .section-heading {
+      font-family: var(--font-ui);
+      font-size: 0.6875rem;
+      font-weight: var(--font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-5);
+      margin-top: 0;
+      padding-bottom: var(--space-3);
+      /* Stitch line instead of solid border */
+      background-image: var(--stitch-line);
+      background-repeat: repeat-x;
+      background-position: 0 100%;
+      background-size: 9px 1px;
+    }
+
+    /* ── Module groups ────────────────────────────────────────────────────── */
+    .module-group {
+      margin-bottom: var(--space-8);
+    }
+
+    .module-label {
+      font-family: var(--font-ui);
+      font-size: 0.6875rem;
+      font-weight: var(--font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .module-label::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 1px;
+      background: var(--color-primary);
+      opacity: 0.6;
+    }
+
+    /* ── Lesson Cards ─────────────────────────────────────────────────────── */
+    .lesson-grid-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .lesson-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lesson-card:hover {
+      border-color: color-mix(in srgb, var(--color-primary) 50%, var(--color-border));
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .lesson-card--complete {
+      border-color: color-mix(in srgb, var(--color-success) 35%, var(--color-border));
+      background: linear-gradient(
+        160deg,
+        var(--color-success-bg) 0%,
+        var(--color-surface) 60%
+      );
+    }
+
+    .lesson-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .lesson-number {
+      font-family: var(--font-ui);
+      font-size: 0.6875rem;
+      font-weight: var(--font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      opacity: 0.7;
+    }
+
+    .completion-badge {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-success);
+      color: white;
+      font-size: 0.625rem;
+      font-weight: var(--font-weight-bold);
+    }
+
+    .lesson-card-title {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      font-style: normal;
+      margin-bottom: var(--space-2);
+      margin-top: 0;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .lesson-card-subtitle {
+      font-family: var(--font-ui);
+      font-size: var(--font-size-sm);
+      font-weight: 300;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+      flex: 1;
+      max-width: none;
+      line-height: 1.55;
+    }
+
+    .lesson-card-footer {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .lesson-card-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    .quiz-score-badge {
+      display: none;
+      font-family: var(--font-ui);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      background: var(--color-success-bg);
+      color: var(--color-success);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--border-radius-sm);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Reference Cards ──────────────────────────────────────────────────── */
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+
+    .reference-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-5);
+      text-decoration: none;
+      color: var(--color-text);
+      transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .reference-card:hover {
+      border-color: color-mix(in srgb, var(--color-primary) 50%, var(--color-border));
+      box-shadow: var(--shadow-md);
+      color: var(--color-text);
+      transform: translateY(-1px);
+    }
+
+    .reference-card:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .reference-card-icon {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: var(--space-3);
+      line-height: 1;
+    }
+
+    .reference-card-title {
+      font-family: var(--font-display);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      margin-bottom: var(--space-2);
+      line-height: 1.3;
+    }
+
+    .reference-card-desc {
+      font-family: var(--font-ui);
+      font-size: var(--font-size-xs);
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .lesson-grid-inner  { grid-template-columns: 1fr; }
+      .reference-grid     { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body data-page="dashboard">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <a href="./index.html" class="site-logo" aria-label="Sewing — Home">
+      <span class="logo-icon" aria-hidden="true">🧵</span>
+      <span class="logo-text">Sewing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar-nav">
+      <span aria-hidden="true">☰</span>
+    </button>
+  </header>
+
+  <div class="layout">
+    <nav id="sidebar-nav" class="sidebar" aria-label="Site navigation">
+      <div class="sidebar-section">
+        <span class="sidebar-label">Course Progress</span>
+        <div class="sidebar-progress">
+          <div class="sidebar-progress-bar" role="progressbar"
+               aria-valuenow="0" aria-valuemin="0" aria-valuemax="10"
+               aria-label="0 of 10 lessons complete">
+            <div class="sidebar-progress-fill"></div>
+          </div>
+          <span class="sidebar-progress-text">0 / 10 lessons</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Lessons</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="./lessons/01-tools.html" class="sidebar-link" data-lesson-id="01-tools"><span class="lesson-status-icon" aria-hidden="true">○</span> 01 — Tools &amp; Setup</a></li>
+          <li><a href="./lessons/02-fabric.html" class="sidebar-link" data-lesson-id="02-fabric"><span class="lesson-status-icon" aria-hidden="true">○</span> 02 — Fabric Fundamentals</a></li>
+          <li><a href="./lessons/03-hand-stitches.html" class="sidebar-link" data-lesson-id="03-hand-stitches"><span class="lesson-status-icon" aria-hidden="true">○</span> 03 — Hand Stitches</a></li>
+          <li><a href="./lessons/04-machine-basics.html" class="sidebar-link" data-lesson-id="04-machine-basics"><span class="lesson-status-icon" aria-hidden="true">○</span> 04 — Machine Basics</a></li>
+          <li><a href="./lessons/05-first-seam.html" class="sidebar-link" data-lesson-id="05-first-seam"><span class="lesson-status-icon" aria-hidden="true">○</span> 05 — Your First Seam</a></li>
+          <li><a href="./lessons/06-seam-finishing.html" class="sidebar-link" data-lesson-id="06-seam-finishing"><span class="lesson-status-icon" aria-hidden="true">○</span> 06 — Seam Finishing</a></li>
+          <li><a href="./lessons/07-pressing.html" class="sidebar-link" data-lesson-id="07-pressing"><span class="lesson-status-icon" aria-hidden="true">○</span> 07 — Pressing</a></li>
+          <li><a href="./lessons/08-reading-patterns.html" class="sidebar-link" data-lesson-id="08-reading-patterns"><span class="lesson-status-icon" aria-hidden="true">○</span> 08 — Reading Patterns</a></li>
+          <li><a href="./lessons/09-hems.html" class="sidebar-link" data-lesson-id="09-hems"><span class="lesson-status-icon" aria-hidden="true">○</span> 09 — Hems &amp; Finishing</a></li>
+          <li><a href="./lessons/10-project-pillow.html" class="sidebar-link" data-lesson-id="10-project-pillow"><span class="lesson-status-icon" aria-hidden="true">○</span> 10 — Pillow Project</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Quizzes</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="./quiz/quiz-tools.html" class="sidebar-link">Tools Quiz</a></li>
+          <li><a href="./quiz/quiz-stitches.html" class="sidebar-link">Stitches Quiz</a></li>
+          <li><a href="./quiz/quiz-machine.html" class="sidebar-link">Machine Quiz</a></li>
+          <li><a href="./quiz/quiz-fabrics.html" class="sidebar-link">Fabrics &amp; Patterns Quiz</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Reference</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="./reference/stitch-glossary.html" class="sidebar-link">Stitch Glossary</a></li>
+          <li><a href="./reference/fabric-guide.html" class="sidebar-link">Fabric Guide</a></li>
+          <li><a href="./reference/needle-chart.html" class="sidebar-link">Needle Chart</a></li>
+          <li><a href="./reference/common-problems.html" class="sidebar-link">Common Problems</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content" class="content" tabindex="-1">
+      <section class="hero" aria-label="Course overview">
+        <h1>Learn to Sew</h1>
+        <p class="hero-subtitle">A structured, step-by-step curriculum from complete beginner to confident home sewer. Work through the lessons in order — each one builds on the last.</p>
+        <div class="master-progress" role="region" aria-label="Overall course progress">
+          <div class="master-progress-label">
+            <span>Course Progress</span>
+            <span class="progress-count">0 / 10 lessons complete</span>
+          </div>
+          <div class="master-progress-bar" role="progressbar"
+               aria-valuenow="0" aria-valuemin="0" aria-valuemax="10"
+               aria-label="0 of 10 lessons complete">
+            <div class="master-progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Lessons">
+        <h2 class="section-heading">Lessons</h2>
+
+        <!-- Getting Started -->
+        <div class="module-group">
+          <p class="module-label">Getting Started</p>
+          <div class="lesson-grid-inner">
+            <article class="lesson-card" data-lesson-id="01-tools" data-title="Lesson 1: Tools &amp; Setup" aria-label="Lesson 1: Tools &amp; Setup — not started">
+              <div class="lesson-card-header">
+                <span class="lesson-number">Lesson 1</span>
+                <span class="completion-badge" aria-label="Complete">✓</span>
+              </div>
+              <h3 class="lesson-card-title">Tools &amp; Setup</h3>
+              <p class="lesson-card-subtitle">Learn what you actually need — and what to skip for now.</p>
+              <div class="lesson-card-footer">
+                <a href="./lessons/01-tools.html" class="btn btn--primary lesson-card-btn">Start Lesson</a>
+                <span class="quiz-score-badge" aria-label="Quiz score"></span>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-id="02-fabric" data-title="Lesson 2: Fabric Fundamentals" aria-label="Lesson 2: Fabric Fundamentals — not started">
+              <div class="lesson-card-header">
+                <span class="lesson-number">Lesson 2</span>
+                <span class="completion-badge" aria-label="Complete">✓</span>
+              </div>
+              <h3 class="lesson-card-title">Fabric Fundamentals</h3>
+              <p class="lesson-card-subtitle">Understand fabric before you buy or cut anything.</p>
+              <div class="lesson-card-footer">
+                <a href="./lessons/02-fabric.html" class="btn btn--primary lesson-card-btn">Start Lesson</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- First Skills -->
+        <div class="module-group">
+          <p class="module-label">First Skills</p>
+          <div class="lesson-grid-inner">
+            <article class="lesson-card" data-lesson-id="03-hand-stitches" data-title="Lesson 3: Hand Stitches" aria-label="Lesson 3: Hand Stitches — not started">
+              <div class="lesson-card-header">
+                <span class="lesson-number">Lesson 3</span>
+                <span class="completion-badge" aria-label="Complete">✓</span>
+              </div>
+              <h3 class="lesson-card-title">Hand Stitches</h3>
+              <p class="lesson-card-subtitle">The five stitches every sewer needs to know.</p>
+              <div class="lesson-card-footer">
+                <a href="./lessons/03-hand-stitches.html" class="btn btn--primary lesson-card-btn">Start Lesson</a>
+                <span class="quiz-score-badge" aria-label="Quiz score"></span>
+              </div>
+            </article>
+            <article class="lesson-card" data-lesson-id="04-machine-basics" data-title="Lesson 4: Machine Basics" aria-label="Lesson 4: Machine Basics — not started">
+              <div class="lesson-card-header">
+                <span class="lesson-number">Lesson 4</span>
+                <span class="completion-badge" aria-label="Complete">✓</span>
+              </div>
+              <h3 class="lesson-card-title">Machine Basics</h3>
+              <p class="lesson-card-subtitle">Threading, tension, and your first stitches on the machine.</p>
+              <div class="lesson-card-footer">
+                <a href="./lessons/04-machine-basics.html" class="btn btn--primary lesson-card-btn">Start Lesson</a>
+                <span class="quiz-score-badge" aria-label="Quiz score"></span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Construction -->
+        <div class="module-group">
+          <p class="module-label">Construction</p>
+          <div class="lesson-grid-inner">
+            <article class="lesson-card" data-lesson-id="05-first-seam" data-title="Lesson 5: Your First Seam" aria-label="Lesson 5: Your First Seam — not started">
+              <div class="lesson-card-header"><span class="lesson-number">Lesson 5</span><span class="completion-badge" aria-label="Complete">✓</span></div>
+              <h3 class="lesson-card-title">Your First Seam</h3>
+              <p class="lesson-card-subtitle">Seam allowance, seam guide, and sewing in a straight line.</p>
+              <div class="lesson-card-footer"><a href="./lessons/05-first-seam.html" class="btn btn--primary lesson-card-btn">Start Lesson</a></div>
+            </article>
+            <article class="lesson-card" data-lesson-id="06-seam-finishing" data-title="Lesson 6: Seam Finishing" aria-label="Lesson 6: Seam Finishing — not started">
+              <div class="lesson-card-header"><span class="lesson-number">Lesson 6</span><span class="completion-badge" aria-label="Complete">✓</span></div>
+              <h3 class="lesson-card-title">Seam Finishing</h3>
+              <p class="lesson-card-subtitle">Keep your seams from fraying apart.</p>
+              <div class="lesson-card-footer"><a href="./lessons/06-seam-finishing.html" class="btn btn--primary lesson-card-btn">Start Lesson</a></div>
+            </article>
+            <article class="lesson-card" data-lesson-id="07-pressing" data-title="Lesson 7: Pressing" aria-label="Lesson 7: Pressing — not started">
+              <div class="lesson-card-header"><span class="lesson-number">Lesson 7</span><span class="completion-badge" aria-label="Complete">✓</span></div>
+              <h3 class="lesson-card-title">Pressing</h3>
+              <p class="lesson-card-subtitle">The one step beginners skip that matters most.</p>
+              <div class="lesson-card-footer"><a href="./lessons/07-pressing.html" class="btn btn--primary lesson-card-btn">Start Lesson</a></div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Patterns + Finishing + Project -->
+        <div class="module-group">
+          <p class="module-label">Patterns &amp; Finishing</p>
+          <div class="lesson-grid-inner">
+            <article class="lesson-card" data-lesson-id="08-reading-patterns" data-title="Lesson 8: Reading Patterns" aria-label="Lesson 8: Reading Patterns — not started">
+              <div class="lesson-card-header"><span class="lesson-number">Lesson 8</span><span class="completion-badge" aria-label="Complete">✓</span></div>
+              <h3 class="lesson-card-title">Reading Patterns</h3>
+              <p class="lesson-card-subtitle">Decode the pattern envelope and layout diagram.</p>
+              <div class="lesson-card-footer"><a href="./lessons/08-reading-patterns.html" class="btn btn--primary lesson-card-btn">Start Lesson</a><span class="quiz-score-badge" aria-label="Quiz score"></span></div>
+            </article>
+            <article class="lesson-card" data-lesson-id="09-hems" data-title="Lesson 9: Hems &amp; Finishing" aria-label="Lesson 9: Hems &amp; Finishing — not started">
+              <div class="lesson-card-header"><span class="lesson-number">Lesson 9</span><span class="completion-badge" aria-label="Complete">✓</span></div>
+              <h3 class="lesson-card-title">Hems &amp; Finishing</h3>
+              <p class="lesson-card-subtitle">Machine hems, hand hems, and edge finishing.</p>
+              <div class="lesson-card-footer"><a href="./lessons/09-hems.html" class="btn btn--primary lesson-card-btn">Start Lesson</a></div>
+            </article>
+            <article class="lesson-card" data-lesson-id="10-project-pillow" data-title="Lesson 10: Project: Pillow Cover" aria-label="Lesson 10: Project: Pillow Cover — not started">
+              <div class="lesson-card-header"><span class="lesson-number">Lesson 10</span><span class="completion-badge" aria-label="Complete">✓</span></div>
+              <h3 class="lesson-card-title">Project: Pillow Cover</h3>
+              <p class="lesson-card-subtitle">Your first complete project — applying everything you've learned.</p>
+              <div class="lesson-card-footer"><a href="./lessons/10-project-pillow.html" class="btn btn--primary lesson-card-btn">Start Lesson</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Reference materials" style="margin-top: var(--space-4);">
+        <h2 class="section-heading">Reference</h2>
+        <div class="reference-grid">
+          <a href="./reference/stitch-glossary.html" class="reference-card">
+            <span class="reference-card-icon" aria-hidden="true">🪡</span>
+            <p class="reference-card-title">Stitch Glossary</p>
+            <p class="reference-card-desc">Hand and machine stitch types with uses and tips</p>
+          </a>
+          <a href="./reference/fabric-guide.html" class="reference-card">
+            <span class="reference-card-icon" aria-hidden="true">🧶</span>
+            <p class="reference-card-title">Fabric Guide</p>
+            <p class="reference-card-desc">Fabric types, properties, care, and beginner picks</p>
+          </a>
+          <a href="./reference/needle-chart.html" class="reference-card">
+            <span class="reference-card-icon" aria-hidden="true">📌</span>
+            <p class="reference-card-title">Needle Chart</p>
+            <p class="reference-card-desc">Which needle to use for every fabric type</p>
+          </a>
+          <a href="./reference/common-problems.html" class="reference-card">
+            <span class="reference-card-icon" aria-hidden="true">🔧</span>
+            <p class="reference-card-title">Common Problems</p>
+            <p class="reference-card-desc">Troubleshooting tension, skipped stitches, and more</p>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <button class="btn btn--ghost" id="export-progress-btn" type="button">Export Progress</button>
+      <button class="btn btn--ghost" id="import-progress-btn" type="button">Import Progress</button>
+      <p class="footer-note">Progress is saved in your browser. Export to keep a backup.</p>
+    </div>
+  </footer>
+
+  <div id="live-region" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="./data/data.js"></script>
+  <script src="./js/progress.js"></script>
+  <script src="./js/navigation.js"></script>
+</body>
+</html>

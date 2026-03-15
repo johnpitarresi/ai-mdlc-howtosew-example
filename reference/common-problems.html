@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Problems &amp; Solutions — Sewing Reference</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+  <style>
+    /* reference-specific inline styles allowed */
+    .reference-intro { font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 2rem; max-width: 60ch; }
+    .reference-section { margin-bottom: 3rem; }
+    .print-note { font-family: var(--font-ui); font-size: 0.875rem; color: var(--color-text-muted); font-style: italic; margin-bottom: 1.5rem; }
+    /* Stitch card styles (for stitch glossary) */
+    .stitch-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem; }
+    .stitch-name { font-family: var(--font-ui); font-size: 1.1rem; font-weight: 700; color: var(--color-primary-dark); margin-bottom: 0.25rem; }
+    .stitch-meta { font-family: var(--font-ui); font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+    .stitch-uses { font-family: var(--font-ui); font-size: 0.875rem; margin-bottom: 0.5rem; }
+    .stitch-desc { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .stitch-tip { font-family: var(--font-ui); font-size: 0.875rem; color: var(--color-info); font-style: italic; }
+    /* Problem article */
+    .problem-article { border: 1px solid var(--color-border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .problem-article h2 { margin-top: 0; border-bottom: 2px solid var(--color-border); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    /* Beginner badge */
+    .badge-beginner { display: inline-block; background: var(--color-success-bg); color: var(--color-success); font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body data-page="reference">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <a href="../index.html" class="site-logo" aria-label="Sewing — Home">
+      <span class="logo-icon" aria-hidden="true">🧵</span>
+      <span class="logo-text">Sewing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar-nav">
+      <span aria-hidden="true">☰</span>
+    </button>
+  </header>
+  <div class="layout">
+    <nav id="sidebar-nav" class="sidebar" aria-label="Site navigation">
+      <div class="sidebar-section">
+        <span class="sidebar-label">Course Progress</span>
+        <div class="sidebar-progress">
+          <div class="sidebar-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" aria-label="0 of 10 lessons complete">
+            <div class="sidebar-progress-fill"></div>
+          </div>
+          <span class="sidebar-progress-text">0 / 10 lessons</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Lessons</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../lessons/01-tools.html" class="sidebar-link" data-lesson-id="01-tools"><span class="lesson-status-icon" aria-hidden="true">○</span> 01 — Tools &amp; Setup</a></li>
+          <li><a href="../lessons/02-fabric.html" class="sidebar-link" data-lesson-id="02-fabric"><span class="lesson-status-icon" aria-hidden="true">○</span> 02 — Fabric Fundamentals</a></li>
+          <li><a href="../lessons/03-hand-stitches.html" class="sidebar-link" data-lesson-id="03-hand-stitches"><span class="lesson-status-icon" aria-hidden="true">○</span> 03 — Hand Stitches</a></li>
+          <li><a href="../lessons/04-machine-basics.html" class="sidebar-link" data-lesson-id="04-machine-basics"><span class="lesson-status-icon" aria-hidden="true">○</span> 04 — Machine Basics</a></li>
+          <li><a href="../lessons/05-first-seam.html" class="sidebar-link" data-lesson-id="05-first-seam"><span class="lesson-status-icon" aria-hidden="true">○</span> 05 — Your First Seam</a></li>
+          <li><a href="../lessons/06-seam-finishing.html" class="sidebar-link" data-lesson-id="06-seam-finishing"><span class="lesson-status-icon" aria-hidden="true">○</span> 06 — Seam Finishing</a></li>
+          <li><a href="../lessons/07-pressing.html" class="sidebar-link" data-lesson-id="07-pressing"><span class="lesson-status-icon" aria-hidden="true">○</span> 07 — Pressing</a></li>
+          <li><a href="../lessons/08-reading-patterns.html" class="sidebar-link" data-lesson-id="08-reading-patterns"><span class="lesson-status-icon" aria-hidden="true">○</span> 08 — Reading Patterns</a></li>
+          <li><a href="../lessons/09-hems.html" class="sidebar-link" data-lesson-id="09-hems"><span class="lesson-status-icon" aria-hidden="true">○</span> 09 — Hems &amp; Finishing</a></li>
+          <li><a href="../lessons/10-project-pillow.html" class="sidebar-link" data-lesson-id="10-project-pillow"><span class="lesson-status-icon" aria-hidden="true">○</span> 10 — Pillow Project</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Quizzes</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../quiz/quiz-tools.html" class="sidebar-link">Tools Quiz</a></li>
+          <li><a href="../quiz/quiz-stitches.html" class="sidebar-link">Stitches Quiz</a></li>
+          <li><a href="../quiz/quiz-machine.html" class="sidebar-link">Machine Quiz</a></li>
+          <li><a href="../quiz/quiz-fabrics.html" class="sidebar-link">Fabrics &amp; Patterns Quiz</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Reference</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../reference/stitch-glossary.html" class="sidebar-link">Stitch Glossary</a></li>
+          <li><a href="../reference/fabric-guide.html" class="sidebar-link">Fabric Guide</a></li>
+          <li><a href="../reference/needle-chart.html" class="sidebar-link">Needle Chart</a></li>
+          <li><a href="../reference/common-problems.html" class="sidebar-link">Common Problems</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main id="main-content" class="content" tabindex="-1">
+      <h1>Common Problems &amp; Solutions</h1>
+      <p class="reference-intro">Every sewer runs into these problems. Here's how to diagnose and fix the most common issues.</p>
+
+      <article class="problem-article">
+        <h2>Thread Breaking (Upper Thread)</h2>
+        <h3>Symptoms</h3>
+        <p>The thread breaks frequently during sewing, requiring re-threading.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Needle not threaded correctly (missed a guide)</li>
+          <li>Tension too tight</li>
+          <li>Thread caught on something (loose thread spool, spool cap wrong size)</li>
+          <li>Needle has a burr or is damaged</li>
+          <li>Thread is old or poor quality</li>
+          <li>Going too fast for the material</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Re-thread the entire machine from scratch with presser foot UP</li>
+          <li>Lower tension by 1 number</li>
+          <li>Check that the thread spool turns freely</li>
+          <li>Replace the needle</li>
+          <li>Use quality thread</li>
+          <li>Slow down on thick seams</li>
+        </ul>
+      </article>
+
+      <article class="problem-article">
+        <h2>Skipped Stitches</h2>
+        <h3>Symptoms</h3>
+        <p>Some stitches are missing from the seam line, leaving gaps.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Wrong needle type for the fabric (most common)</li>
+          <li>Needle is dull or damaged</li>
+          <li>Needle is not fully seated (not pushed all the way up into the clamp)</li>
+          <li>Thread not going through take-up lever correctly</li>
+          <li>Sewing too fast</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Replace needle with correct type for fabric (ballpoint for knits, sharp for wovens)</li>
+          <li>Push needle all the way up before tightening</li>
+          <li>Re-thread completely</li>
+          <li>Slow down</li>
+          <li>If sewing knits, use a ballpoint/stretch needle specifically</li>
+        </ul>
+      </article>
+
+      <article class="problem-article">
+        <h2>Puckered Seams</h2>
+        <h3>Symptoms</h3>
+        <p>The fabric bunches or gathers along the seam line after sewing.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Tension too tight for the fabric weight</li>
+          <li>Stitch length too short for the fabric</li>
+          <li>Thread weight too heavy for delicate fabric</li>
+          <li>Fabric not supported — letting it hang off the table creates drag</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Reduce tension slightly</li>
+          <li>Lengthen stitch slightly (try 2.5–3mm)</li>
+          <li>Use thread that matches the fabric weight</li>
+          <li>Always support the fabric so it doesn't drag downward while you sew</li>
+          <li>Test on a scrap</li>
+        </ul>
+      </article>
+
+      <article class="problem-article">
+        <h2>Uneven Tension (Thread Loops on Top or Bottom)</h2>
+        <h3>Symptoms</h3>
+        <p>Loops of thread visible on the top or bottom of the seam. If loops are on TOP → bobbin thread pulling up. If loops are on BOTTOM → upper thread pulling down.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Machine not threaded correctly (most common — usually missed a guide or the take-up lever)</li>
+          <li>Bobbin not inserted correctly or wound unevenly</li>
+          <li>Tension set incorrectly</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Re-thread EVERYTHING — upper thread and bobbin — from scratch, with presser foot UP</li>
+          <li>Check bobbin is wound evenly and inserted with thread going in the right direction</li>
+          <li>Adjust tension incrementally (one number at a time) and test on scrap</li>
+        </ul>
+      </article>
+
+      <article class="problem-article">
+        <h2>Needle Breaking</h2>
+        <h3>Symptoms</h3>
+        <p>The needle breaks during sewing, sometimes with a loud snap.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Pulling or pushing fabric through the machine (fabric movement should come from the feed dogs only)</li>
+          <li>Sewing over a pin</li>
+          <li>Needle too fine for thick fabric</li>
+          <li>Needle not tightened fully in clamp</li>
+          <li>Using wrong needle for the job</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Let the feed dogs move the fabric — you guide, not push</li>
+          <li>Never sew over pins</li>
+          <li>Use a heavier needle for heavy fabric</li>
+          <li>Tighten needle clamp securely</li>
+          <li>Replace with correct needle type</li>
+        </ul>
+      </article>
+
+      <article class="problem-article">
+        <h2>Fabric Not Feeding (Fabric Not Moving)</h2>
+        <h3>Symptoms</h3>
+        <p>The machine runs but the fabric stays in place; tiny loops of stitches pile on top of each other in one spot.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Feed dogs are lowered (some machines have a button to drop feed dogs for darning — accidentally activated)</li>
+          <li>Presser foot pressure too low</li>
+          <li>Beginning to sew from the very edge of the fabric with no fabric under presser foot</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Check if feed dogs are in the raised position (consult your machine manual)</li>
+          <li>Increase presser foot pressure if adjustable</li>
+          <li>Start sewing with at least 1/2 inch of fabric under the presser foot</li>
+          <li>Hold thread tails out of the way when starting</li>
+        </ul>
+      </article>
+
+      <article class="problem-article">
+        <h2>Thread Tangling / Bird's Nest Under the Fabric</h2>
+        <h3>Symptoms</h3>
+        <p>At the start of sewing, a clump of tangled thread appears on the underside of the fabric.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Not holding thread tails at the start</li>
+          <li>Upper thread not threaded correctly through all guides</li>
+          <li>Presser foot down during threading</li>
+          <li>Starting to sew without lowering the needle into the fabric first</li>
+          <li>Bobbin thread not pulled up before starting</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Always hold both thread tails (upper and bobbin) to the back when you begin sewing</li>
+          <li>Re-thread with presser foot UP</li>
+          <li>Pull up the bobbin thread through the hole in the needle plate before starting</li>
+          <li>Lower the needle into the fabric before lowering the presser foot for your first stitch</li>
+        </ul>
+      </article>
+
+      <article class="problem-article">
+        <h2>Seams Not Straight</h2>
+        <h3>Symptoms</h3>
+        <p>The stitched seam line curves or wanders instead of going in a straight line.</p>
+        <h3>Common Causes</h3>
+        <ul>
+          <li>Looking at the needle instead of the seam guide</li>
+          <li>Not using the seam guide on the needle plate</li>
+          <li>Fabric shifting during sewing</li>
+          <li>Going too fast to maintain control</li>
+        </ul>
+        <h3>Solutions</h3>
+        <ul>
+          <li>Focus your eyes on the raw edge of the fabric and the seam guide mark — NOT the needle</li>
+          <li>Use a piece of painter's tape on the needle plate as a seam guide if the engraved lines are hard to see</li>
+          <li>Slow down</li>
+          <li>Pin more frequently to prevent fabric shifting</li>
+        </ul>
+      </article>
+
+      <section class="reference-section">
+        <h2>Still Stuck?</h2>
+        <p>Sewing communities are incredibly helpful. If your problem isn't listed here, try:</p>
+        <ul>
+          <li><a href="https://www.reddit.com/r/SewingForBeginners/" target="_blank" rel="noopener noreferrer">r/SewingForBeginners</a> — 184,000+ members, very welcoming to beginners</li>
+          <li><a href="https://www.reddit.com/r/sewing/" target="_blank" rel="noopener noreferrer">r/sewing</a> — 500,000+ members, all skill levels</li>
+          <li>Your machine's manual — the troubleshooting section is often surprisingly helpful</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <button class="btn btn--ghost" id="export-progress-btn" type="button">Export Progress</button>
+      <button class="btn btn--ghost" id="import-progress-btn" type="button">Import Progress</button>
+      <p class="footer-note">Progress is saved in your browser. Export to keep a backup.</p>
+    </div>
+  </footer>
+  <div id="live-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="../data/data.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/navigation.js"></script>
+</body>
+</html>

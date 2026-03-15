@@ -1,0 +1,659 @@
+/* ==========================================================================
+   main.css — Global styles, design tokens, layout
+   Project: Sewing Learning Site — Maison de Couture theme
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Design Tokens)
+   -------------------------------------------------------------------------- */
+:root {
+  /* ── Brand — warm antique mauve ──────────────────────────────────────── */
+  --color-primary:        #8b5e7a;
+  --color-primary-dark:   #6b3f5a;
+  --color-primary-light:  #f5edf2;
+
+  /* ── Semantic ─────────────────────────────────────────────────────────── */
+  --color-success:        #5a7a5e;
+  --color-success-bg:     #eef3ef;
+  --color-warning:        #9b6840;
+  --color-warning-bg:     #fdf4ea;
+  --color-info:           #4a6a85;
+  --color-info-bg:        #edf2f6;
+  --color-error:          #8b3a4a;
+  --color-error-bg:       #fceaed;
+
+  /* ── Surfaces — ivory parchment ──────────────────────────────────────── */
+  --color-surface:        #fffefb;
+  --color-background:     #faf6f0;
+
+  /* ── Sidebar — deep walnut ───────────────────────────────────────────── */
+  --color-sidebar-bg:         #261a16;
+  --color-sidebar-text:       #e8ddd5;
+  --color-sidebar-active:     #c9a0b5;
+  --color-sidebar-active-bg:  #36221a;
+  --color-sidebar-hover:      #36221a;
+  --color-sidebar-label:      #8c6d62;
+  --color-sidebar-border:     #3d2820;
+
+  /* ── Text ─────────────────────────────────────────────────────────────── */
+  --color-text:           #2c1a14;
+  --color-text-muted:     #7a6358;
+  --color-text-inverse:   #faf6f0;
+
+  /* ── Borders — warm beige ────────────────────────────────────────────── */
+  --color-border:         #ddd0c6;
+  --color-border-strong:  #c4b5aa;
+
+  /* ── Typography ──────────────────────────────────────────────────────── */
+  --font-body:    'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-ui:      'Jost', system-ui, sans-serif;
+  --font-mono:    'Courier New', Courier, monospace;
+
+  --font-size-xs:   0.75rem;
+  --font-size-sm:   0.875rem;
+  --font-size-base: 1.0625rem;
+  --font-size-lg:   1.1875rem;
+  --font-size-xl:   1.375rem;
+  --font-size-2xl:  1.625rem;
+  --font-size-3xl:  2.125rem;
+  --font-size-4xl:  2.75rem;
+
+  --line-height-tight:   1.25;
+  --line-height-body:    1.85;
+  --line-height-heading: 1.2;
+
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* ── Spacing ─────────────────────────────────────────────────────────── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  --sidebar-width:     264px;
+  --content-max-width: 740px;
+  --header-height:     60px;
+
+  /* ── Effects ─────────────────────────────────────────────────────────── */
+  --border-radius-sm: 3px;
+  --border-radius:    6px;
+  --border-radius-lg: 10px;
+
+  --shadow-sm: 0 1px 5px rgba(44, 26, 20, 0.07), 0 1px 2px rgba(44, 26, 20, 0.05);
+  --shadow-md: 0 4px 16px rgba(44, 26, 20, 0.09), 0 1px 4px rgba(44, 26, 20, 0.06);
+  --shadow-lg: 0 8px 32px rgba(44, 26, 20, 0.12), 0 2px 8px rgba(44, 26, 20, 0.08);
+
+  --transition-fast: 160ms ease;
+  --transition-base: 280ms ease;
+
+  /* ── Decorative ──────────────────────────────────────────────────────── */
+  --stitch-line: repeating-linear-gradient(
+    90deg,
+    var(--color-border) 0px, var(--color-border) 5px,
+    transparent 5px, transparent 9px
+  );
+  --stitch-line-accent: repeating-linear-gradient(
+    90deg,
+    var(--color-primary) 0px, var(--color-primary) 5px,
+    transparent 5px, transparent 9px
+  );
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Base Styles
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  /* Subtle linen weave texture */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect x='0' y='0' width='4' height='4' fill='%23b89a85' opacity='0.07'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23b89a85' opacity='0.07'/%3E%3C/svg%3E");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-heading);
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--font-size-3xl); margin-bottom: var(--space-4); }
+h2 { font-size: var(--font-size-2xl); margin-bottom: var(--space-3); margin-top: var(--space-8); }
+h3 { font-size: var(--font-size-xl);  margin-bottom: var(--space-2); margin-top: var(--space-6); }
+h4 { font-size: var(--font-size-lg);  margin-bottom: var(--space-2); margin-top: var(--space-4); }
+
+p {
+  margin-bottom: var(--space-4);
+  max-width: 70ch;
+}
+
+ul, ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+strong { font-weight: var(--font-weight-semibold); }
+
+/* --------------------------------------------------------------------------
+   5. Links
+   -------------------------------------------------------------------------- */
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration-color: var(--color-primary-dark);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* --------------------------------------------------------------------------
+   6. Tables
+   -------------------------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-6);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-sm);
+}
+
+th {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-ui);
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--color-primary);
+  letter-spacing: 0.03em;
+}
+
+td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) td {
+  background-color: rgba(250, 246, 240, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   7. Skip Link (Accessibility)
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--border-radius);
+  font-family: var(--font-ui);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  z-index: 9999;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   8. Header
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: var(--color-sidebar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  box-shadow: 0 2px 12px rgba(20, 10, 8, 0.25);
+  /* Subtle warm border at bottom */
+  border-bottom: 1px solid rgba(201, 160, 181, 0.15);
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--color-text-inverse);
+  transition: opacity var(--transition-fast);
+}
+
+.site-logo:hover {
+  opacity: 0.85;
+  color: var(--color-text-inverse);
+}
+
+.site-logo:focus-visible {
+  outline: 2px solid var(--color-sidebar-active);
+  outline-offset: 4px;
+  border-radius: var(--border-radius-sm);
+}
+
+.logo-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: var(--color-sidebar-active);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text-inverse);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--border-radius-sm);
+  line-height: 1;
+  transition: background-color var(--transition-fast);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-sidebar-hover);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-sidebar-active);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Layout Grid
+   -------------------------------------------------------------------------- */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. Sidebar
+   -------------------------------------------------------------------------- */
+.sidebar {
+  background-color: var(--color-sidebar-bg);
+  height: calc(100vh - var(--header-height));
+  position: sticky;
+  top: var(--header-height);
+  overflow-y: auto;
+  padding: var(--space-5) 0 var(--space-8);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sidebar-border) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--color-sidebar-border);
+  border-radius: 2px;
+}
+
+.sidebar-section {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid rgba(61, 40, 32, 0.7);
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
+}
+
+.sidebar-label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-sidebar-label);
+  padding: 0 var(--space-5) var(--space-2);
+}
+
+.sidebar-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  color: var(--color-sidebar-text);
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-sm);
+  font-weight: 300;
+  letter-spacing: 0.015em;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  border-left: 2px solid transparent;
+}
+
+.sidebar-link:hover {
+  background-color: var(--color-sidebar-hover);
+  color: var(--color-text-inverse);
+}
+
+.sidebar-link:focus-visible {
+  outline: 2px solid var(--color-sidebar-active);
+  outline-offset: -2px;
+}
+
+.sidebar-link[aria-current="page"] {
+  background-color: var(--color-sidebar-active-bg);
+  color: var(--color-sidebar-active);
+  border-left-color: var(--color-sidebar-active);
+  font-weight: var(--font-weight-medium);
+}
+
+.lesson-status-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-sidebar-label);
+  opacity: 0.7;
+}
+
+.sidebar-link[aria-current="page"] .lesson-status-icon,
+.sidebar-link.is-complete .lesson-status-icon {
+  color: var(--color-success);
+  opacity: 1;
+}
+
+/* Sidebar Progress Bar */
+.sidebar-progress {
+  padding: var(--space-2) var(--space-5) var(--space-3);
+}
+
+.sidebar-progress-bar {
+  height: 4px;
+  background-color: rgba(61, 40, 32, 0.8);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.sidebar-progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-dark) 0%,
+    var(--color-sidebar-active) 50%,
+    var(--color-primary-dark) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: 2px;
+  transition: width var(--transition-base);
+  width: 0%;
+  animation: threadShimmer 4s ease-in-out infinite;
+}
+
+.sidebar-progress-text {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--color-sidebar-label);
+}
+
+/* --------------------------------------------------------------------------
+   11. Main Content Area
+   -------------------------------------------------------------------------- */
+.content {
+  padding: var(--space-10) var(--space-10);
+  max-width: calc(var(--content-max-width) + 2 * var(--space-10));
+  width: 100%;
+}
+
+.content:focus {
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   12. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-5) var(--space-10);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  max-width: var(--content-max-width);
+}
+
+.footer-note {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: none;
+}
+
+/* --------------------------------------------------------------------------
+   13. Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: calc(var(--space-2) + 1px) var(--space-5);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-text-inverse);
+}
+
+.btn--secondary {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+.btn--ghost:hover {
+  background-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--accent {
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+  border-color: var(--color-success);
+}
+
+.btn--accent:hover {
+  background-color: #436646;
+  border-color: #436646;
+  color: var(--color-text-inverse);
+}
+
+/* --------------------------------------------------------------------------
+   14. Utility Classes
+   -------------------------------------------------------------------------- */
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+#live-region {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   15. Animations
+   -------------------------------------------------------------------------- */
+@keyframes threadShimmer {
+  0%, 100% { background-position: 0% center; }
+  50%       { background-position: 200% center; }
+}
+
+/* --------------------------------------------------------------------------
+   16. Responsive — Sidebar collapses at 768px
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    z-index: 200;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.is-open {
+    display: block;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .content {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .site-footer {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}

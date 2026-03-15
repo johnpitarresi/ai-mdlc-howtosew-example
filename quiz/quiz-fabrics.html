@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Fabrics &amp; Patterns — Sewing</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+</head>
+<body data-page="quiz">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <a href="../index.html" class="site-logo" aria-label="Sewing — Home">
+      <span class="logo-icon" aria-hidden="true">🧵</span>
+      <span class="logo-text">Sewing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar-nav">
+      <span aria-hidden="true">☰</span>
+    </button>
+  </header>
+  <div class="layout">
+    <nav id="sidebar-nav" class="sidebar" aria-label="Site navigation">
+      <div class="sidebar-section">
+        <span class="sidebar-label">Course Progress</span>
+        <div class="sidebar-progress">
+          <div class="sidebar-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" aria-label="0 of 10 lessons complete">
+            <div class="sidebar-progress-fill"></div>
+          </div>
+          <span class="sidebar-progress-text">0 / 10 lessons</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Lessons</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../lessons/01-tools.html" class="sidebar-link" data-lesson-id="01-tools"><span class="lesson-status-icon" aria-hidden="true">○</span> 01 — Tools &amp; Setup</a></li>
+          <li><a href="../lessons/02-fabric.html" class="sidebar-link" data-lesson-id="02-fabric"><span class="lesson-status-icon" aria-hidden="true">○</span> 02 — Fabric Fundamentals</a></li>
+          <li><a href="../lessons/03-hand-stitches.html" class="sidebar-link" data-lesson-id="03-hand-stitches"><span class="lesson-status-icon" aria-hidden="true">○</span> 03 — Hand Stitches</a></li>
+          <li><a href="../lessons/04-machine-basics.html" class="sidebar-link" data-lesson-id="04-machine-basics"><span class="lesson-status-icon" aria-hidden="true">○</span> 04 — Machine Basics</a></li>
+          <li><a href="../lessons/05-first-seam.html" class="sidebar-link" data-lesson-id="05-first-seam"><span class="lesson-status-icon" aria-hidden="true">○</span> 05 — Your First Seam</a></li>
+          <li><a href="../lessons/06-seam-finishing.html" class="sidebar-link" data-lesson-id="06-seam-finishing"><span class="lesson-status-icon" aria-hidden="true">○</span> 06 — Seam Finishing</a></li>
+          <li><a href="../lessons/07-pressing.html" class="sidebar-link" data-lesson-id="07-pressing"><span class="lesson-status-icon" aria-hidden="true">○</span> 07 — Pressing</a></li>
+          <li><a href="../lessons/08-reading-patterns.html" class="sidebar-link" data-lesson-id="08-reading-patterns"><span class="lesson-status-icon" aria-hidden="true">○</span> 08 — Reading Patterns</a></li>
+          <li><a href="../lessons/09-hems.html" class="sidebar-link" data-lesson-id="09-hems"><span class="lesson-status-icon" aria-hidden="true">○</span> 09 — Hems &amp; Finishing</a></li>
+          <li><a href="../lessons/10-project-pillow.html" class="sidebar-link" data-lesson-id="10-project-pillow"><span class="lesson-status-icon" aria-hidden="true">○</span> 10 — Pillow Project</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Quizzes</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../quiz/quiz-tools.html" class="sidebar-link">Tools Quiz</a></li>
+          <li><a href="../quiz/quiz-stitches.html" class="sidebar-link">Stitches Quiz</a></li>
+          <li><a href="../quiz/quiz-machine.html" class="sidebar-link">Machine Quiz</a></li>
+          <li><a href="../quiz/quiz-fabrics.html" class="sidebar-link">Fabrics &amp; Patterns Quiz</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Reference</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../reference/stitch-glossary.html" class="sidebar-link">Stitch Glossary</a></li>
+          <li><a href="../reference/fabric-guide.html" class="sidebar-link">Fabric Guide</a></li>
+          <li><a href="../reference/needle-chart.html" class="sidebar-link">Needle Chart</a></li>
+          <li><a href="../reference/common-problems.html" class="sidebar-link">Common Problems</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main id="main-content" class="content" tabindex="-1">
+      <div class="quiz-breadcrumb">
+        <a href="../index.html">Home</a> / <span aria-current="page">Quiz: Fabrics &amp; Patterns</span>
+      </div>
+      <div class="quiz-header">
+        <h1>Quiz: Fabrics &amp; Patterns</h1>
+        <p class="quiz-meta">5 questions · Test your knowledge before moving on</p>
+      </div>
+      <div id="quiz-container"></div>
+    </main>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <button class="btn btn--ghost" id="export-progress-btn" type="button">Export Progress</button>
+      <button class="btn btn--ghost" id="import-progress-btn" type="button">Import Progress</button>
+      <p class="footer-note">Progress is saved in your browser. Export to keep a backup.</p>
+    </div>
+  </footer>
+  <div id="live-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="../data/data.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script>
+    const QUIZ_DATA = {
+      id: "quiz-fabrics",
+      title: "Quiz: Fabrics & Patterns",
+      questions: [
+        {
+          id: "q1",
+          text: "Why must you pre-wash fabric before sewing?",
+          options: [
+            "To make it softer and easier to cut",
+            "To prevent the finished item from shrinking after it's sewn",
+            "To remove the grain line so it lies flat",
+            "To activate the stiffening agents in new fabric"
+          ],
+          correct: 1,
+          explanation: "Most fabrics shrink during their first wash. If you sew first and wash later, the finished item can shrink and distort. Pre-washing ensures the fabric is at its final size before you cut and sew."
+        },
+        {
+          id: "q2",
+          text: "What is the selvage of a fabric?",
+          options: [
+            "The bias (diagonal) edge of the fabric",
+            "The finished, non-fraying edge that runs the length of the fabric",
+            "The fold line created when fabric is folded in half",
+            "The printed pattern on the fabric surface"
+          ],
+          correct: 1,
+          explanation: "The selvage is the finished lengthwise edge of the fabric as it comes off the loom. It doesn't fray. Pattern grainline arrows are placed parallel to the selvage to ensure pieces are cut on grain."
+        },
+        {
+          id: "q3",
+          text: "Knit fabrics differ from woven fabrics because they...",
+          options: [
+            "Are always made of synthetic fibers",
+            "Stretch, especially horizontally",
+            "Do not require seam finishing",
+            "Must be cut on the bias"
+          ],
+          correct: 1,
+          explanation: "Knit fabrics are made of interlocking loops that stretch, especially across the width. This makes them behave very differently from woven fabrics when sewing — they require stretch stitches or a zigzag, and a ballpoint needle."
+        },
+        {
+          id: "q4",
+          text: "When choosing a sewing pattern size, you should...",
+          options: [
+            "Choose the same number as your clothing size",
+            "Measure your body and compare to the pattern's size chart",
+            "Always go one size up from your clothing size",
+            "Choose based on the photo on the envelope front"
+          ],
+          correct: 1,
+          explanation: "Pattern sizes are based on standard body measurements, not clothing sizes. Clothing sizes vary by brand and era. Always measure yourself (bust, waist, hip) and match to the pattern's specific measurement chart."
+        },
+        {
+          id: "q5",
+          text: "What do notches on a sewing pattern represent?",
+          options: [
+            "Places where you need to cut a hole in the fabric",
+            "Matching points that help you align pieces correctly during assembly",
+            "Decorative details to sew onto the garment",
+            "Marks showing where to fold fabric for a dart"
+          ],
+          correct: 1,
+          explanation: "Notches are small triangular marks on the cutting line. You cut them outward (away from the fabric) to preserve them as reference points. When two pattern pieces have matching notches, you align those notches during assembly to ensure correct orientation."
+        }
+      ]
+    };
+    document.addEventListener('DOMContentLoaded', function() {
+      Quiz.init(QUIZ_DATA);
+    });
+  </script>
+</body>
+</html>

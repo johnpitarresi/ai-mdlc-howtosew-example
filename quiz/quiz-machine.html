@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Machine Basics — Sewing</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+</head>
+<body data-page="quiz">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <a href="../index.html" class="site-logo" aria-label="Sewing — Home">
+      <span class="logo-icon" aria-hidden="true">🧵</span>
+      <span class="logo-text">Sewing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar-nav">
+      <span aria-hidden="true">☰</span>
+    </button>
+  </header>
+  <div class="layout">
+    <nav id="sidebar-nav" class="sidebar" aria-label="Site navigation">
+      <div class="sidebar-section">
+        <span class="sidebar-label">Course Progress</span>
+        <div class="sidebar-progress">
+          <div class="sidebar-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" aria-label="0 of 10 lessons complete">
+            <div class="sidebar-progress-fill"></div>
+          </div>
+          <span class="sidebar-progress-text">0 / 10 lessons</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Lessons</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../lessons/01-tools.html" class="sidebar-link" data-lesson-id="01-tools"><span class="lesson-status-icon" aria-hidden="true">○</span> 01 — Tools &amp; Setup</a></li>
+          <li><a href="../lessons/02-fabric.html" class="sidebar-link" data-lesson-id="02-fabric"><span class="lesson-status-icon" aria-hidden="true">○</span> 02 — Fabric Fundamentals</a></li>
+          <li><a href="../lessons/03-hand-stitches.html" class="sidebar-link" data-lesson-id="03-hand-stitches"><span class="lesson-status-icon" aria-hidden="true">○</span> 03 — Hand Stitches</a></li>
+          <li><a href="../lessons/04-machine-basics.html" class="sidebar-link" data-lesson-id="04-machine-basics"><span class="lesson-status-icon" aria-hidden="true">○</span> 04 — Machine Basics</a></li>
+          <li><a href="../lessons/05-first-seam.html" class="sidebar-link" data-lesson-id="05-first-seam"><span class="lesson-status-icon" aria-hidden="true">○</span> 05 — Your First Seam</a></li>
+          <li><a href="../lessons/06-seam-finishing.html" class="sidebar-link" data-lesson-id="06-seam-finishing"><span class="lesson-status-icon" aria-hidden="true">○</span> 06 — Seam Finishing</a></li>
+          <li><a href="../lessons/07-pressing.html" class="sidebar-link" data-lesson-id="07-pressing"><span class="lesson-status-icon" aria-hidden="true">○</span> 07 — Pressing</a></li>
+          <li><a href="../lessons/08-reading-patterns.html" class="sidebar-link" data-lesson-id="08-reading-patterns"><span class="lesson-status-icon" aria-hidden="true">○</span> 08 — Reading Patterns</a></li>
+          <li><a href="../lessons/09-hems.html" class="sidebar-link" data-lesson-id="09-hems"><span class="lesson-status-icon" aria-hidden="true">○</span> 09 — Hems &amp; Finishing</a></li>
+          <li><a href="../lessons/10-project-pillow.html" class="sidebar-link" data-lesson-id="10-project-pillow"><span class="lesson-status-icon" aria-hidden="true">○</span> 10 — Pillow Project</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Quizzes</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../quiz/quiz-tools.html" class="sidebar-link">Tools Quiz</a></li>
+          <li><a href="../quiz/quiz-stitches.html" class="sidebar-link">Stitches Quiz</a></li>
+          <li><a href="../quiz/quiz-machine.html" class="sidebar-link">Machine Quiz</a></li>
+          <li><a href="../quiz/quiz-fabrics.html" class="sidebar-link">Fabrics &amp; Patterns Quiz</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Reference</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../reference/stitch-glossary.html" class="sidebar-link">Stitch Glossary</a></li>
+          <li><a href="../reference/fabric-guide.html" class="sidebar-link">Fabric Guide</a></li>
+          <li><a href="../reference/needle-chart.html" class="sidebar-link">Needle Chart</a></li>
+          <li><a href="../reference/common-problems.html" class="sidebar-link">Common Problems</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main id="main-content" class="content" tabindex="-1">
+      <div class="quiz-breadcrumb">
+        <a href="../index.html">Home</a> / <span aria-current="page">Quiz: Machine Basics</span>
+      </div>
+      <div class="quiz-header">
+        <h1>Quiz: Machine Basics</h1>
+        <p class="quiz-meta">5 questions · Test your knowledge before moving on</p>
+      </div>
+      <div id="quiz-container"></div>
+    </main>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <button class="btn btn--ghost" id="export-progress-btn" type="button">Export Progress</button>
+      <button class="btn btn--ghost" id="import-progress-btn" type="button">Import Progress</button>
+      <p class="footer-note">Progress is saved in your browser. Export to keep a backup.</p>
+    </div>
+  </footer>
+  <div id="live-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="../data/data.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script>
+    const QUIZ_DATA = {
+      id: "quiz-machine",
+      title: "Quiz: Machine Basics",
+      questions: [
+        {
+          id: "q1",
+          text: "What does the tension dial on a sewing machine control?",
+          options: [
+            "How fast the machine sews",
+            "How tightly the upper thread is held as it forms stitches",
+            "The length of each stitch",
+            "The width of a zigzag stitch"
+          ],
+          correct: 1,
+          explanation: "The tension dial controls how tightly the upper thread is gripped by the tension discs. Correct tension makes upper and lower threads meet in the middle of the fabric layers, creating balanced stitches on both sides."
+        },
+        {
+          id: "q2",
+          text: "What is the standard stitch length for most general sewing?",
+          options: [
+            "0.5–1mm",
+            "2.5–3mm",
+            "5–6mm",
+            "8–10mm"
+          ],
+          correct: 1,
+          explanation: "2.5–3mm is the standard stitch length for most sewing on medium-weight fabrics. Shorter (2mm) for fine fabrics, longer (3.5–4mm) for basting, maximum (4–5mm) for gathering."
+        },
+        {
+          id: "q3",
+          text: "Why do you backstitch at the start and end of every seam?",
+          options: [
+            "To make the thread look nicer",
+            "To lock the stitches so the seam doesn't unravel",
+            "To test the tension before sewing",
+            "To mark where the seam ends"
+          ],
+          correct: 1,
+          explanation: "Backstitching sews over the first and last few stitches in reverse, locking the thread ends so they can't pull out. Without backstitching, seams can unravel from the ends under normal use."
+        },
+        {
+          id: "q4",
+          text: "If the bobbin thread is showing on the TOP of your fabric, the problem is most likely...",
+          options: [
+            "The bobbin is wound incorrectly",
+            "The upper thread tension is too loose",
+            "The stitch length is too long",
+            "The needle is too small for the fabric"
+          ],
+          correct: 1,
+          explanation: "When upper tension is too loose, the upper thread is not being pulled tight enough, so the bobbin thread gets pulled up to the surface of the fabric. Increase the tension number slightly and test on a scrap."
+        },
+        {
+          id: "q5",
+          text: "After finishing a seam, you should pull the fabric in which direction before cutting the thread?",
+          options: [
+            "Straight forward",
+            "Straight back toward you",
+            "To the back-left, away from the presser foot",
+            "Upward, away from the needle plate"
+          ],
+          correct: 2,
+          explanation: "Pulling to the back-left gives you enough thread tail to cut cleanly and keeps thread tails on the back of the work. Pulling straight back risks breaking the needle or jamming the machine."
+        }
+      ]
+    };
+    document.addEventListener('DOMContentLoaded', function() {
+      Quiz.init(QUIZ_DATA);
+    });
+  </script>
+</body>
+</html>

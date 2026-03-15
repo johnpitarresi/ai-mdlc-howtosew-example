@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Hand Stitches — Sewing</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+</head>
+<body data-page="quiz">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <a href="../index.html" class="site-logo" aria-label="Sewing — Home">
+      <span class="logo-icon" aria-hidden="true">🧵</span>
+      <span class="logo-text">Sewing</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar-nav">
+      <span aria-hidden="true">☰</span>
+    </button>
+  </header>
+  <div class="layout">
+    <nav id="sidebar-nav" class="sidebar" aria-label="Site navigation">
+      <div class="sidebar-section">
+        <span class="sidebar-label">Course Progress</span>
+        <div class="sidebar-progress">
+          <div class="sidebar-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" aria-label="0 of 10 lessons complete">
+            <div class="sidebar-progress-fill"></div>
+          </div>
+          <span class="sidebar-progress-text">0 / 10 lessons</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Lessons</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../lessons/01-tools.html" class="sidebar-link" data-lesson-id="01-tools"><span class="lesson-status-icon" aria-hidden="true">○</span> 01 — Tools &amp; Setup</a></li>
+          <li><a href="../lessons/02-fabric.html" class="sidebar-link" data-lesson-id="02-fabric"><span class="lesson-status-icon" aria-hidden="true">○</span> 02 — Fabric Fundamentals</a></li>
+          <li><a href="../lessons/03-hand-stitches.html" class="sidebar-link" data-lesson-id="03-hand-stitches"><span class="lesson-status-icon" aria-hidden="true">○</span> 03 — Hand Stitches</a></li>
+          <li><a href="../lessons/04-machine-basics.html" class="sidebar-link" data-lesson-id="04-machine-basics"><span class="lesson-status-icon" aria-hidden="true">○</span> 04 — Machine Basics</a></li>
+          <li><a href="../lessons/05-first-seam.html" class="sidebar-link" data-lesson-id="05-first-seam"><span class="lesson-status-icon" aria-hidden="true">○</span> 05 — Your First Seam</a></li>
+          <li><a href="../lessons/06-seam-finishing.html" class="sidebar-link" data-lesson-id="06-seam-finishing"><span class="lesson-status-icon" aria-hidden="true">○</span> 06 — Seam Finishing</a></li>
+          <li><a href="../lessons/07-pressing.html" class="sidebar-link" data-lesson-id="07-pressing"><span class="lesson-status-icon" aria-hidden="true">○</span> 07 — Pressing</a></li>
+          <li><a href="../lessons/08-reading-patterns.html" class="sidebar-link" data-lesson-id="08-reading-patterns"><span class="lesson-status-icon" aria-hidden="true">○</span> 08 — Reading Patterns</a></li>
+          <li><a href="../lessons/09-hems.html" class="sidebar-link" data-lesson-id="09-hems"><span class="lesson-status-icon" aria-hidden="true">○</span> 09 — Hems &amp; Finishing</a></li>
+          <li><a href="../lessons/10-project-pillow.html" class="sidebar-link" data-lesson-id="10-project-pillow"><span class="lesson-status-icon" aria-hidden="true">○</span> 10 — Pillow Project</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Quizzes</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../quiz/quiz-tools.html" class="sidebar-link">Tools Quiz</a></li>
+          <li><a href="../quiz/quiz-stitches.html" class="sidebar-link">Stitches Quiz</a></li>
+          <li><a href="../quiz/quiz-machine.html" class="sidebar-link">Machine Quiz</a></li>
+          <li><a href="../quiz/quiz-fabrics.html" class="sidebar-link">Fabrics &amp; Patterns Quiz</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Reference</span>
+        <ul class="sidebar-nav-list" role="list">
+          <li><a href="../reference/stitch-glossary.html" class="sidebar-link">Stitch Glossary</a></li>
+          <li><a href="../reference/fabric-guide.html" class="sidebar-link">Fabric Guide</a></li>
+          <li><a href="../reference/needle-chart.html" class="sidebar-link">Needle Chart</a></li>
+          <li><a href="../reference/common-problems.html" class="sidebar-link">Common Problems</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main id="main-content" class="content" tabindex="-1">
+      <div class="quiz-breadcrumb">
+        <a href="../index.html">Home</a> / <span aria-current="page">Quiz: Hand Stitches</span>
+      </div>
+      <div class="quiz-header">
+        <h1>Quiz: Hand Stitches</h1>
+        <p class="quiz-meta">5 questions · Test your knowledge before moving on</p>
+      </div>
+      <div id="quiz-container"></div>
+    </main>
+  </div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <button class="btn btn--ghost" id="export-progress-btn" type="button">Export Progress</button>
+      <button class="btn btn--ghost" id="import-progress-btn" type="button">Import Progress</button>
+      <p class="footer-note">Progress is saved in your browser. Export to keep a backup.</p>
+    </div>
+  </footer>
+  <div id="live-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="../data/data.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script>
+    const QUIZ_DATA = {
+      id: "quiz-stitches",
+      title: "Quiz: Hand Stitches",
+      questions: [
+        {
+          id: "q1",
+          text: "Which hand stitch is considered the strongest for permanent seams?",
+          options: [
+            "Running stitch",
+            "Basting stitch",
+            "Backstitch",
+            "Whip stitch"
+          ],
+          correct: 2,
+          explanation: "The backstitch overlaps each stitch, creating a continuous solid line of thread. This makes it the strongest hand stitch and the closest hand-sewing approximation to a machine seam."
+        },
+        {
+          id: "q2",
+          text: "What is a basting stitch primarily used for?",
+          options: [
+            "Permanently joining seams",
+            "Temporarily holding fabric in place before machine sewing",
+            "Finishing raw edges",
+            "Attaching buttons"
+          ],
+          correct: 1,
+          explanation: "Basting stitches are long running stitches (1/2–1 inch intervals) used to temporarily hold fabric together for fitting or to keep layers aligned. They're removed after permanent stitching."
+        },
+        {
+          id: "q3",
+          text: "The slip stitch (ladder stitch) is used to...",
+          options: [
+            "Create visible decorative seams",
+            "Close an opening in a seam invisibly from the outside",
+            "Reinforce the start of a machine seam",
+            "Join two raw edges with an overcast stitch"
+          ],
+          correct: 1,
+          explanation: "The slip stitch alternates picking up a few threads from each folded edge. When pulled gently closed, the stitches disappear inside the fold, creating an invisible closure — perfect for closing pillow openings."
+        },
+        {
+          id: "q4",
+          text: "Why should hand-sewing thread be no longer than 18 inches?",
+          options: [
+            "Longer thread wastes materials",
+            "Longer thread tangles, knots, and becomes harder to control",
+            "It's a safety regulation",
+            "Thread becomes weaker when longer than 18 inches"
+          ],
+          correct: 1,
+          explanation: "Long thread twists on itself as you sew, creating tangles and knots that are frustrating to remove. 18 inches is long enough to sew a reasonable distance while short enough to stay manageable."
+        },
+        {
+          id: "q5",
+          text: "What is the whip stitch used for?",
+          options: [
+            "Creating invisible hems inside garments",
+            "Joining two folded edges by wrapping thread diagonally over them",
+            "Gathering fabric into ruffles",
+            "Reinforcing machine stitching"
+          ],
+          correct: 1,
+          explanation: "The whip stitch passes the needle diagonally over the edge with each stitch, wrapping the thread around the joined edges. It's visible from the outside and is commonly used to close stuffed items and join folded edges."
+        }
+      ]
+    };
+    document.addEventListener('DOMContentLoaded', function() {
+      Quiz.init(QUIZ_DATA);
+    });
+  </script>
+</body>
+</html>
